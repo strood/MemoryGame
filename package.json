@@ -1,0 +1,73 @@
+{
+  "name": "webpack-template",
+  "version": "1.0.0",
+  "description": "A template for webpack projects",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
+    "inline-source-map": "^0.6.2",
+    "mini-css-extract-plugin": "^1.2.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.0",
+    "webpack-bundle-analyzer": "^3.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
+    "autoprefixer": "^10.0.1",
+    "babel-loader": "^8.1.0",
+    "compression-webpack-plugin": "^6.0.3",
+    "css-loader": "^5.0.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^4.5.0",
+    "postcss": "^8.1.6",
+    "postcss-loader": "^4.0.4",
+    "sass": "^1.27.0",
+    "sass-loader": "^10.0.4",
+    "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^5.0.3",
+    "url-loader": "^4.1.1",
+    "webpack": "^5",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:watch:dev": "npm run build:watch -- --env.env=dev",
+    "build:dev:bundleanalyze": "npm run build:dev -- --env.addons=bundleanalyze",
+    "build:dev": "npm run build -- --env.env=dev",
+    "debug:dev": "npm run debug -- --env.env=dev",
+    "build:watch:prod": "npm run build:watch -- --env.env=prod",
+    "build:prod:bundleanalyze": "npm run build:prod -- --env.addons=bundleanalyze",
+    "build:prod:firstplugin": "npm run build:prod -- --env.addons=firstplugin",
+    "build:prod": "npm run build -- --env.env=prod",
+    "debug:prod": "npm run debug -- --env.env=prod",
+    "debug": "node --inspect --debug-brk node ./node_modules/webpack/bin/webpack.js",
+    "build": "node ./node_modules/webpack/bin/webpack.js",
+    "build:watch": "npm run build -- --watch",
+    "build:allAddons": "npm run build:prod -- --env.addons=bundleanalyze --env.addons=firstplugin",
+    "webpack-defaults": "webpack-defaults",
+    "start": "webpack-dev-server --open --env.env=dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strood/BaseProject/tree/master/Webpack"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "keywords": [
+    "Autoprefixer",
+    "PostCSS",
+    "Webpack",
+    "React",
+    "Babel"
+  ],
+  "author": "Strood <stroodz19@gmail.com>",
+  "license": "ISC"
+}

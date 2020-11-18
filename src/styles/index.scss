@@ -1,0 +1,11 @@
+// Base reset
+@import './vars';
+@import './base';
+body {
+  background-color: orange;
+  h1 {
+    &:hover {
+      color: $light-blue;
+    }
+  }
+}
