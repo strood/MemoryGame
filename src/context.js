@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import 'regenerator-runtime/runtime';
-import { key, url, COLOR, QUERY, PER_PAGE } from './config';
+import { key, url, QUERY, PER_PAGE } from './config';
 
 const AppContext = React.createContext();
 
@@ -47,7 +47,7 @@ const AppProvider = ({ children }) => {
   const [currentPhotos, setCurrentPhotos] = useState([]);
   const [clickedPhotos, setClickedPhotos] = useState([]);
   const [pageNo, setPageNo] = useState(1);
-  const queryNo = getRandomQuery();
+  const [queryNo, setQueryNo] = useState(getRandomQuery());
 
   const fetchPhotos = async () => {
     setLoadingInitial(true);
@@ -74,10 +74,21 @@ const AppProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log(allPhotos);
+    // Check if new photos needed
     if (allPhotos.length < 15) {
-      setPageNo(pageNo + 1);
-      fetchPhotos();
+      // Increment pages first
+      if (pageNo < 5) {
+        setPageNo(pageNo + 1);
+        fetchPhotos();
+      } else {
+        // Then reset pages and new query
+        setPageNo(1);
+        let newQueryNo = queryNo;
+        while (queryNo === newQueryNo) {
+          newQueryNo = getRandomQuery();
+        }
+        setQueryNo(newQueryNo);
+      }
     }
     if (currentScore === 0) {
       setCurrentPhotos(allPhotos.splice(0, 16));

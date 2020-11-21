@@ -61,8 +61,9 @@ export default function Main() {
     await setAllPhotos(allPhotos.slice(1));
   };
 
+  // Onclick check click validity and increment game accordingly
   const handleClick = async (e, id) => {
-    // If already clicked reset game and shuffle board
+    // If already clicked reset game, and clicked
     if (clickedPhotos.includes(id)) {
       //check if new highscore
       if (currentScore > highScore) {
@@ -72,23 +73,27 @@ export default function Main() {
       setCurrentScore(0);
       setClickedPhotos([]);
     } else {
-      //increment game
+      //increment game, add to clicked photos
       setCurrentScore(currentScore + 1);
       setClickedPhotos([...clickedPhotos, id]);
     }
   };
 
+  // After handleClick updates currentScore, handle board
   useEffect(() => {
     if (currentPhotos.length === 0) {
       // Initial load, do nothing
     } else {
       if (currentScore > 12) {
+        // Sub out clicked photo for new
         swapPhoto();
       }
+      // Always shuffle
       shuffleBoard();
     }
   }, [currentScore]);
 
+  // Returns
   if (loadingInitial) {
     return (
       <main>
