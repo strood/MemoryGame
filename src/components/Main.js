@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useGlobalContext } from '../context';
 import Photo from './Photo';
 
@@ -16,6 +16,8 @@ export default function Main() {
     clickedPhotos,
     setClickedPhotos,
     loadingError,
+    modalStatus,
+    setModalStatus,
   } = useGlobalContext();
 
   const shuffleBoard = () => {
@@ -72,6 +74,7 @@ export default function Main() {
       }
       setCurrentScore(0);
       setClickedPhotos([]);
+      setModalStatus(true);
     } else {
       //increment game, add to clicked photos
       setCurrentScore(currentScore + 1);

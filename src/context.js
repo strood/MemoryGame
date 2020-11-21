@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useRef } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import 'regenerator-runtime/runtime';
 import { key, url, QUERY, PER_PAGE } from './config';
 
@@ -48,6 +48,7 @@ const AppProvider = ({ children }) => {
   const [clickedPhotos, setClickedPhotos] = useState([]);
   const [pageNo, setPageNo] = useState(1);
   const [queryNo, setQueryNo] = useState(getRandomQuery());
+  const [modalStatus, setModalStatus] = useState(false);
 
   const fetchPhotos = async () => {
     setLoadingInitial(true);
@@ -110,6 +111,8 @@ const AppProvider = ({ children }) => {
         setAllPhotos,
         clickedPhotos,
         setClickedPhotos,
+        modalStatus,
+        setModalStatus,
       }}
     >
       {children}

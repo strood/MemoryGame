@@ -1,11 +1,13 @@
 import React from 'react';
 import Nav from './components/Nav';
 import Main from './components/Main';
+import Modal from './components/Modal';
 // import components
 
 function App() {
   return (
     <>
+      <Modal />
       <Nav />
       <Main />
       <footer>
